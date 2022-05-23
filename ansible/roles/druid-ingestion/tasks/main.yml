@@ -1,4 +1,8 @@
-
+- name: "loop through list from a variable"
+  debug:
+    msg: "An item: {{ item }}"
+  with_items: "{{ ingestion_spec_configs }}"
+  
 - name: Load the context json
   set_fact: {"{{ item }}_context":"{{ lookup('template', 'context.json.j2')}}"}
   with_items: "{{ ingestion_spec_configs }}"
